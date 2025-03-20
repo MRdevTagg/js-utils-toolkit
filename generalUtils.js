@@ -1,4 +1,40 @@
-import { get, isFunction, isPlainObject } from 'lodash'
+// Replace lodash functions with native implementations
+
+/**
+ * Checks if value is a function.
+ * @param {*} value - The value to check.
+ * @returns {boolean} Returns true if value is a function, else false.
+ */
+export const isFunction = value => typeof value === 'function';
+
+/**
+ * Gets the value at path of object.
+ * @param {Object} obj - The object to query.
+ * @param {string|Array} path - The path to get.
+ * @param {*} [defaultValue] - The value returned if the resolved value is undefined.
+ * @returns {*} The resolved value.
+ */
+export const get = (obj, path, defaultValue) => {
+  if (obj == null) return defaultValue;
+  const keys = Array.isArray(path) ? path : path.split('.');
+  let result = obj;
+  for (let i = 0; i < keys.length; i++) {
+    result = result?.[keys[i]];
+    if (result === undefined) return defaultValue;
+  }
+  return result ?? defaultValue;
+};
+
+/**
+ * Checks if value is a plain object.
+ * @param {*} value - The value to check.
+ * @returns {boolean} Returns true if value is a plain object, else false.
+ */
+export const isPlainObject = value => {
+  if (typeof value !== 'object' || value === null) return false;
+  const proto = Object.getPrototypeOf(value);
+  return proto === Object.prototype || proto === null;
+};
 
 // #region OBJECT ------------------------------------------------------------------
 const { entries, keys, values, fromEntries } = Object

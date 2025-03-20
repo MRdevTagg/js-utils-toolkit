@@ -2,15 +2,12 @@ const fs = require('fs');
 const path = require('path');
 const { exec } = require('child_process');
 
-// A more useful build script
 console.log('Building package...');
 
-// Create a dist directory for processed files
 if (!fs.existsSync(path.join(__dirname, 'dist'))) {
   fs.mkdirSync(path.join(__dirname, 'dist'));
 }
 
-// Function to run shell commands
 function runCommand(command) {
   return new Promise((resolve, reject) => {
     exec(command, (error, stdout, stderr) => {
@@ -27,10 +24,8 @@ function runCommand(command) {
   });
 }
 
-// Copy main files with some processing
 async function buildPackage() {
   try {
-    // 1. Create browser-compatible bundle with global access
     console.log('Creating browser bundle...');
     await runCommand(
       'esbuild index.js --bundle --global-name=JSUtils --minify --format=iife --outfile=dist/utils.min.js'
@@ -41,7 +36,6 @@ async function buildPackage() {
       'esbuild index.js --bundle --minify --format=esm --outfile=dist/utils.esm.js'
     );
     
-    // 2. Copy source files to dist
     console.log('Copying source files...');
     fs.copyFileSync(
       path.join(__dirname, 'GlobalState.js'),
@@ -64,7 +58,6 @@ async function buildPackage() {
       path.join(__dirname, 'dist', 'cli.js')
     );
     
-    // 3. Copy package.json with adjusted paths
     console.log('Preparing package.json for distribution...');
     const packageJson = require('./package.json');
     const distPackageJson = {
@@ -77,7 +70,6 @@ async function buildPackage() {
       JSON.stringify(distPackageJson, null, 2)
     );
     
-    // 4. Copy README and other documentation
     console.log('Copying documentation...');
     fs.copyFileSync(
       path.join(__dirname, 'README.md'),

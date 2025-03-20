@@ -11,7 +11,7 @@
     "dist"
   ],
   "bin": {
-    "js-utils": "./cli.js"
+    "js-utils": "cli.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -28,9 +28,7 @@
   ],
   "author": "Your Name",
   "license": "MIT",
-  "dependencies": {
-    "lodash": "^4.17.21"
-  },
+  "dependencies": {},
   "devDependencies": {
     "esbuild": "^0.19.5"
   },

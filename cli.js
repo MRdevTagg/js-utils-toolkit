@@ -2,7 +2,6 @@
 
 const { generalUtils } = require('./index.js');
 
-// Parse command line arguments
 const args = process.argv.slice(2);
 const command = args[0];
 
@@ -34,7 +33,6 @@ function printUtilInfo(utilName) {
   }
 }
 
-// Handle different commands
 switch (command) {
   case 'help':
     console.log('JS Utils Toolkit CLI');

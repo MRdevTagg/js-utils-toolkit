@@ -1,5 +1,5 @@
-import { isFunction } from 'lodash'
-import { callOn, onEntries, safeCall } from './generalUtils'
+import { isFunction } from './generalUtils.js'
+import { callOn, onEntries, safeCall } from './generalUtils.js'
 
 const { defineProperty, keys } = Object
 const { isArray } = Array
