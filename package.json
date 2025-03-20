@@ -1,0 +1,48 @@
+{
+  "name": "js-utils-toolkit",
+  "version": "0.1.0",
+  "description": "A collection of JavaScript utility functions for state management and general operations",
+  "main": "index.js",
+  "module": "index.mjs",
+  "files": [
+    "*.js",
+    "*.mjs",
+    "!*.test.js",
+    "dist"
+  ],
+  "bin": {
+    "js-utils": "./cli.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node build.js",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run build",
+    "publish-package": "npm publish"
+  },
+  "keywords": [
+    "utils",
+    "state management",
+    "javascript",
+    "utilities"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "esbuild": "^0.19.5"
+  },
+  "unpkg": "dist/utils.min.js",
+  "jsdelivr": "dist/utils.min.js",
+  "browser": "dist/utils.min.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrdevtagg/js-utils-toolkit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mrdevtagg/js-utils-toolkit/issues"
+  },
+  "homepage": "https://github.com/mrdevtagg/js-utils-toolkit#readme"
+}
